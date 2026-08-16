@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cleaning - Making things Sparkle</title>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Great+Vibes&display=swap"
+		rel="stylesheet">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			color: #1f2937;
+			line-height: 1.6;
+			background: linear-gradient(to bottom, #ffffff 0%, #fdf2f8 50%, #ffffff 100%);
+		}
+
+		.font-script {
+			font-family: 'Great Vibes', cursive;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 24px;
+		}
+
+		/* Header */
+		header {
+			padding: 24px 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo-section {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+		}
+
+		.logo-box {
+			width: 64px;
+			height: 64px;
+			border-radius: 12px;
+			background: #fce7f3;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border: 1px solid #fbcfe8;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+		}
+
+		.logo-box div {
+			color: #ec4899;
+			font-weight: bold;
+			font-size: 24px;
+		}
+
+		.logo-text h1 {
+			font-size: 32px;
+			line-height: 1;
+			margin-bottom: 4px;
+		}
+
+		.logo-text .tagline {
+			font-size: 12px;
+			color: #6b7280;
+		}
+
+		nav {
+			display: flex;
+			gap: 24px;
+			align-items: center;
+		}
+
+		nav a {
+			color: #1f2937;
+			text-decoration: none;
+			transition: color 0.3s;
+		}
+
+		nav a:hover {
+			color: #ec4899;
+		}
+
+		.btn {
+			padding: 10px 20px;
+			background: #fbcfe8;
+			color: #be185d;
+			border: none;
+			border-radius: 24px;
+			font-weight: 600;
+			cursor: pointer;
+			text-decoration: none;
+			display: inline-block;
+			transition: all 0.3s;
+		}
+
+		.btn:hover {
+			filter: brightness(0.95);
+		}
+
+		.btn-primary {
+			background: #ec4899;
+			color: white;
+			box-shadow: 0 4px 6px rgba(236, 72, 153, 0.3);
+		}
+
+		.btn-primary:hover {
+			background: #db2777;
+		}
+
+		.btn-outline {
+			background: white;
+			color: #ec4899;
+			border: 2px solid #fbcfe8;
+		}
+
+		/* Hero Section */
+		.hero {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 48px;
+			align-items: center;
+			padding: 48px 0;
+		}
+
+		.hero-content h2 {
+			font-size: 48px;
+			font-weight: bold;
+			line-height: 1.2;
+			margin-bottom: 16px;
+		}
+
+		.hero-content p {
+			font-size: 18px;
+			color: #4b5563;
+			margin-bottom: 24px;
+		}
+
+		.hero-buttons {
+			display: flex;
+			gap: 16px;
+			margin-bottom: 32px;
+		}
+
+		.hero-features {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+			margin-top: 32px;
+		}
+
+		.feature {
+			display: flex;
+			align-items: flex-start;
+			gap: 12px;
+		}
+
+		.feature-icon {
+			width: 40px;
+			height: 40px;
+			background: #fef3f2;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 20px;
+			flex-shrink: 0;
+		}
+
+		.feature-text h4 {
+			font-weight: 600;
+			margin-bottom: 4px;
+		}
+
+		.feature-text p {
+			font-size: 12px;
+			color: #6b7280;
+		}
+
+		/* Hero Image */
+		.hero-image {
+			position: relative;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			animation: float 4s ease-in-out infinite;
+		}
+
+		.hero-image img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 20px;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-12px);
+			}
+		}
+
+		/* Sparkles */
+		.sparkles {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+		}
+
+		.sparkle {
+			position: absolute;
+			width: 16px;
+			height: 16px;
+			background: #fbbf24;
+			border-radius: 50%;
+			filter: blur(2px);
+			opacity: 0;
+			animation: sparkle 2s infinite;
+		}
+
+		.sparkle:nth-child(1) {
+			left: 10%;
+			top: 20%;
+			animation-delay: 0s;
+		}
+
+		.sparkle:nth-child(2) {
+			left: 80%;
+			top: 10%;
+			animation-delay: 0.6s;
+		}
+
+		.sparkle:nth-child(3) {
+			left: 60%;
+			top: 70%;
+			animation-delay: 0.3s;
+		}
+
+		.sparkle:nth-child(4) {
+			left: 30%;
+			top: 60%;
+			animation-delay: 0.8s;
+		}
+
+		@keyframes sparkle {
+			0% {
+				transform: scale(0.8) translateY(0);
+				opacity: 0;
+			}
+
+			50% {
+				transform: scale(1.1) translateY(-6px);
+				opacity: 1;
+			}
+
+			100% {
+				transform: scale(0.9) translateY(0);
+				opacity: 0;
+			}
+		}
+
+		/* Services Section */
+		.services {
+			padding: 48px 0;
+		}
+
+		.section-header {
+			margin-bottom: 32px;
+		}
+
+		.section-header h3 {
+			font-size: 32px;
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
+
+		.section-header p {
+			color: #6b7280;
+		}
+
+		.services-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 24px;
+		}
+
+		.service-card {
+			padding: 32px 24px;
+			background: rgba(255, 255, 255, 0.6);
+			backdrop-filter: blur(10px);
+			border: 1px solid #fce7f3;
+			border-radius: 16px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		.service-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		.service-card h4 {
+			font-size: 20px;
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.service-card p {
+			font-size: 14px;
+			color: #6b7280;
+			margin-bottom: 16px;
+		}
+
+		/* About Section */
+		.about {
+			padding: 48px 0;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 48px;
+			align-items: center;
+		}
+
+		.about h3 {
+			font-size: 32px;
+			font-weight: 600;
+			margin-bottom: 16px;
+		}
+
+		.about p {
+			color: #6b7280;
+			margin-bottom: 16px;
+		}
+
+		.about ul {
+			list-style: disc;
+			margin-left: 20px;
+			color: #374151;
+		}
+
+		.about ul li {
+			font-size: 14px;
+			margin-bottom: 8px;
+		}
+
+		.promise-box {
+			padding: 32px;
+			background: #fef3f2;
+			border: 1px solid #fecaca;
+			border-radius: 16px;
+		}
+
+		.promise-box h4 {
+			font-weight: 600;
+			margin-bottom: 12px;
+		}
+
+		.promise-box p {
+			font-size: 14px;
+			color: #6b7280;
+		}
+
+		/* Booking Section */
+		.booking {
+			padding: 48px 0;
+		}
+
+		.booking form {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 16px;
+			margin-top: 24px;
+		}
+
+		.booking input,
+		.booking select,
+		.booking textarea {
+			padding: 12px 16px;
+			border: 1px solid #d1d5db;
+			border-radius: 8px;
+			font-family: 'Inter', sans-serif;
+			font-size: 14px;
+		}
+
+		.booking textarea {
+			grid-column: 1 / -1;
+			min-height: 100px;
+			resize: vertical;
+		}
+
+		.form-footer {
+			grid-column: 1 / -1;
+			display: flex;
+			gap: 16px;
+			align-items: center;
+		}
+
+		.form-footer a {
+			font-size: 14px;
+			color: #6b7280;
+			text-decoration: none;
+		}
+
+		.form-footer a:hover {
+			color: #ec4899;
+		}
+
+		/* Footer */
+		footer {
+			padding: 48px 0;
+			text-align: center;
+			color: #6b7280;
+			border-top: 1px solid #e5e7eb;
+			margin-top: 48px;
+		}
+
+		/* Responsive */
+		@media (max-width: 768px) {
+			nav {
+				display: none;
+			}
+
+			.hero,
+			.services-grid,
+			.about,
+			.booking form {
+				grid-template-columns: 1fr;
+			}
+
+			.hero-content h2 {
+				font-size: 36px;
+			}
+
+			.hero-features {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<div class="logo-section">
+				<div class="logo-box">
+					<div>C</div>
+				</div>
+				<div class="logo-text">
+					<h1 class="font-script">Cleaning</h1>
+					<div class="tagline">Making things Sparkle</div>
+				</div>
+			</div>
+			<nav>
+				<a href="#services">Services</a>
+				<a href="#about">About</a>
+				<a href="#book">Book</a>
+				<a href="tel:555-123-4567" class="btn">Call us</a>
+			</nav>
+		</header>
+
+		<!-- HERO -->
+		<main>
+			<section class="hero">
+				<div class="hero-content">
+					<h2>Friendly, thorough cleaning that sparkles ✨</h2>
+					<p>We bring the warm, hand-drawn touch to every home – gentle, detailed, and reliable cleaning packages for
+						busy families and small businesses.</p>
+
+					<div class="hero-buttons">
+						<a href="#book" class="btn btn-primary">Book Now</a>
+						<a href="#services" class="btn btn-outline">Our Services</a>
+					</div>
+
+					<div class="hero-features">
+						<div class="feature">
+							<div class="feature-icon">🧽</div>
+							<div class="feature-text">
+								<h4>Eco-friendly</h4>
+								<p>Safe products for home & kids</p>
+							</div>
+						</div>
+
+						<div class="feature">
+							<div class="feature-icon">⏰</div>
+							<div class="feature-text">
+								<h4>Punctual</h4>
+								<p>On-time pros, every time</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="hero-image">
+					<img src="https://horizons-cdn.hostinger.com/70992e90-24d3-4bad-a438-69be23a99db0/eaf143d395ff6ae4cd6f427fdea9e920.png" alt="Two friendly cleaning professionals with mop and cleaning cloth">
+					<div class="sparkles">
+						<div class="sparkle"></div>
+						<div class="sparkle"></div>
+						<div class="sparkle"></div>
+						<div class="sparkle"></div>
+					</div>
+				</div>
+			</section>
+
+			<!-- SERVICES -->
+			<section id="services" class="services">
+				<div class="section-header">
+					<h3>Services</h3>
+					<p>Choose a package that fits your needs – or contact us for a custom plan.</p>
+				</div>
+
+				<div class="services-grid">
+					<div class="service-card">
+						<h4>Standard Clean</h4>
+						<p>Kitchen, bathrooms, vacuum, dusting (monthly/weekly).</p>
+						<button class="btn btn-outline">Choose</button>
+					</div>
+
+					<div class="service-card">
+						<h4>Deep Clean</h4>
+						<p>Detailed cleaning: baseboards, inside appliances, grout.</p>
+						<button class="btn btn-outline">Choose</button>
+					</div>
+
+					<div class="service-card">
+						<h4>Move In/Out</h4>
+						<p>Full clean to help your space feel brand new.</p>
+						<button class="btn btn-outline">Choose</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- ABOUT -->
+			<section id="about" class="about">
+				<div>
+					<h3>About Cleaning</h3>
+					<p>We started with a small promise: treat every home like our own and make every surface shine. Our team is
+						background-checked, insured, and trained for gentle, effective cleaning.</p>
+					<ul>
+						<li>Friendly, vetted professionals</li>
+						<li>Custom scheduling</li>
+						<li>Eco-friendly and safe products</li>
+					</ul>
+				</div>
+
+				<div class="promise-box">
+					<h4>Our Promise</h4>
+					<p>If you're not satisfied, we'll re-clean at no extra charge.</p>
+				</div>
+			</section>
+
+			<!-- BOOKING FORM -->
+			<section id="book" class="booking">
+				<div class="section-header">
+					<h3>Book a service</h3>
+					<p>Fill out the form and we'll contact you within one business day.</p>
+				</div>
+
+				<form action="/api/book" method="POST">
+					<input name="name" required placeholder="Full name" />
+					<input name="phone" required placeholder="Phone or WhatsApp" />
+					<input name="email" type="email" placeholder="Email (optional)" />
+					<select name="service">
+                        <option>Standard Clean</option>
+                        <option>Deep Clean</option>
+                        <option>Move In/Out</option>
+                    </select>
+					<textarea name="notes" placeholder="Notes / preferred dates"></textarea>
+
+					<div class="form-footer">
+						<button type="submit" class="btn btn-primary">Request Booking</button>
+						<a href="mailto:hello@cleaning.example">Or email us directly</a>
+					</div>
+				</form>
+			</section>
+
+			<!-- FOOTER -->
+			<footer>
+				© <span id="year"></span> Cleaning • We make everything shine
+			</footer>
+		</main>
+	</div>
+
+	<script>
+		document.getElementById('year').textContent = new Date().getFullYear();
+	</script>
+</body>
+
+</html>
